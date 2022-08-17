@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from helpers.models import BaseModel
 
 # Create your models here.
@@ -13,6 +14,9 @@ class Category(BaseModel):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("shop:product_list_by_category", args=[self.slug])
 
 
 class Product(BaseModel):
@@ -35,3 +39,6 @@ class Product(BaseModel):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("shop:product_detail", args=[self.id, self.slug])
