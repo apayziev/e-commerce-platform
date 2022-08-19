@@ -19,13 +19,14 @@ schema_view = swagger_get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("cart/", include("cart.urls", namespace="cart")),
+    path("", include("shop.urls", namespace="shop")),
     path(
         "api/v1/swagger/schema/",
         schema_view.with_ui("swagger", cache_timeout=0),
         name="swagger-schema",
     ),
     path("__debug__/", include(debug_toolbar.urls)),
-    path("", include("shop.urls", namespace="shop")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

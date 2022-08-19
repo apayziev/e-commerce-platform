@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # Local apps
     "common",
     "shop.apps.ShopConfig",
+    "cart.apps.CartConfig",
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+
+CART_SESSION_ID = "cart"
 
 try:
     from .local_settings import *  # noqa
