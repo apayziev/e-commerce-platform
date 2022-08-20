@@ -16,7 +16,7 @@ def generate_unique_slug(klass, field):
 
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField("created at", auto_now_add=True)
+    created_at = models.DateTimeField("created at", auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField("updated at", auto_now=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
