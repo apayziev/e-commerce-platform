@@ -145,6 +145,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 CART_SESSION_ID = "cart"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 try:
     from .local_settings import *  # noqa
