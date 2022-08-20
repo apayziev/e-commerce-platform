@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "shop.apps.ShopConfig",
     "cart.apps.CartConfig",
     "orders.apps.OrdersConfig",
+    "payment.apps.PaymentConfig",
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,26 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 CART_SESSION_ID = "cart"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.mail.yahoo.com"
+EMAIL_USE_SSL = True
+EMAIL_PORT = 486
+EMAIL_HOST_USER = "adm1n.ecommerce@yahoo.com"
+EMAIL_HOST_PASSWORD = "Ok18102003"
+
+BRAINTREE_MERCHANT_ID = "ky2tck75dtknh52f"
+BRAINTREE_PUBLIC_KEY = "yf5r5vvb432mk455"  # Public Key
+BRAINTREE_PRIVATE_KEY = "40bbe17c7badf1676758bb673436083f"
+
+import braintree
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY,
+)
 
 try:
     from .local_settings import *  # noqa
