@@ -18,11 +18,12 @@ schema_view = swagger_get_schema_view(
 )
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("cart/", include("cart.urls", namespace="cart")),
     path("orders/", include("orders.urls", namespace="orders")),
     path("payment/", include("payment.urls", namespace="payment")),
     path("coupons/", include("coupons.urls", namespace="coupons")),
+    path("rosetta/", include("rosetta.urls")),
+    path("admin/", admin.site.urls),
     path("", include("shop.urls", namespace="shop")),
     path(
         "api/v1/swagger/schema/",

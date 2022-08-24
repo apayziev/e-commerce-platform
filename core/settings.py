@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "debug_toolbar",
     "easy_thumbnails",
+    "rosetta",
     # Local apps
     "common",
     "shop.apps.ShopConfig",
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -167,6 +169,13 @@ BRAINTREE_CONF = braintree.Configuration(
     BRAINTREE_PUBLIC_KEY,
     BRAINTREE_PRIVATE_KEY,
 )
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale/"),)
+
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+REDIS_DB = 1
+
+from django.utils.translation import gettext_lazy as _
 
 try:
     from .local_settings import *  # noqa
